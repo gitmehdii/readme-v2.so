@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'highlight.js/styles/github.css' layer(hljs-light);
+@import 'highlight.js/styles/github-dark.css' layer(hljs-dark);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* ── Markdown preview: GitHub-like styling ──────────────────────────────────── */
+.markdown-preview {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--foreground));
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  @apply font-semibold tracking-tight;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.25em;
+}
+
+.markdown-preview h1 {
+  @apply text-2xl border-b border-border pb-2;
+}
+
+.markdown-preview h2 {
+  @apply text-xl border-b border-border pb-2;
+}
+
+.markdown-preview h3 {
+  @apply text-lg;
+}
+
+.markdown-preview p {
+  @apply mb-4 leading-7;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply mb-4 pl-6;
+}
+
+.markdown-preview ul {
+  @apply list-disc;
+}
+
+.markdown-preview ol {
+  @apply list-decimal;
+}
+
+.markdown-preview li {
+  @apply mb-1 leading-7;
+}
+
+.markdown-preview li input[type="checkbox"] {
+  @apply mr-2;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 border-border pl-4 text-muted-foreground italic my-4;
+}
+
+.markdown-preview code {
+  @apply text-xs font-mono bg-muted px-1.5 py-0.5 rounded;
+}
+
+.markdown-preview pre {
+  @apply bg-muted rounded-lg p-4 overflow-x-auto my-4;
+}
+
+.markdown-preview pre code {
+  @apply bg-transparent p-0 text-xs;
+}
+
+.markdown-preview table {
+  @apply w-full border-collapse my-4 text-sm;
+}
+
+.markdown-preview th {
+  @apply border border-border px-3 py-2 bg-muted font-semibold text-left;
+}
+
+.markdown-preview td {
+  @apply border border-border px-3 py-2;
+}
+
+.markdown-preview tr:nth-child(even) td {
+  @apply bg-muted/50;
+}
+
+.markdown-preview a {
+  @apply text-primary underline underline-offset-2 hover:opacity-80;
+}
+
+.markdown-preview img {
+  @apply max-w-full rounded-lg my-2;
+}
+
+.markdown-preview hr {
+  @apply border-border my-6;
+}
+
+/* ── Syntax highlight overrides ─────────────────────────────────────────────── */
+.markdown-preview .hljs {
+  background: transparent !important;
+}
+
+/* Light mode: use github theme */
+@layer hljs-light {
+  :root .hljs {
+    /* inherits github.css */
+  }
+}
+
+/* Dark mode: use github-dark theme */
+@layer hljs-dark {
+  .dark .hljs {
+    /* inherits github-dark.css */
+  }
+}
+
+/* ── Scrollbar styling ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground;
+}
+
+/* ── Block textarea ─────────────────────────────────────────────────────────── */
+.block-textarea {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  resize: none;
+  field-sizing: content;
+  min-height: 80px;
+}
+
+/* ── Drag & drop ────────────────────────────────────────────────────────────── */
+.sortable-item {
+  transition: transform 200ms ease;
+}
+
+.drag-overlay {
+  @apply shadow-2xl opacity-90 rotate-1;
+}

@@ -1,7 +1,5 @@
 "use client"
 
-export const dynamic = 'force-dynamic'
-
 import React, { useRef, useEffect, useState, useCallback } from "react"
 import { useEditorStore } from "@/lib/store"
 import { Toolbar } from "@/components/Toolbar"

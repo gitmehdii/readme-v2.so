@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/readme-so-v2)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gitmehdii/readme-v2.so/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](./LICENSE)
 
 </div>
@@ -34,7 +34,7 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/readme-so-v2.git
+git clone https://github.com/gitmehdii/readme-v2.so
 cd readme-so-v2
 npm install
 npm run dev
@@ -64,4 +64,4 @@ vercel --prod
 
 ## License
 
-MIT © 2024 YOUR_NAME
+MIT © 2024 gitmehdii

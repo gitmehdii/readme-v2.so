@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react"
-import { Search, Check, Plus, Star, Package, FolderOpen, Users } from "lucide-react"
+import { Search, Check, Plus, Star, Package, FolderOpen } from "lucide-react"
 import * as LucideIcons from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,6 @@ const categoryIcons: Record<Category, React.ReactNode> = {
   essentials: <Star className="h-3 w-3" />,
   setup: <Package className="h-3 w-3" />,
   project: <FolderOpen className="h-3 w-3" />,
-  community: <Users className="h-3 w-3" />,
 }
 
 function BlockIcon({ name }: { name: string }) {

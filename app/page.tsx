@@ -10,7 +10,6 @@ import { Canvas } from "@/components/Editor/Canvas"
 import { MarkdownPreview } from "@/components/Preview/MarkdownPreview"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeSync } from "@/components/ThemeSync"
-import { toast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
 import { BookOpen, LayoutPanelLeft, Eye } from "lucide-react"
 
@@ -58,7 +57,7 @@ const MOBILE_TABS = [
 type MobileTab = (typeof MOBILE_TABS)[number]["id"]
 
 export default function HomePage() {
-  const { previewMode, addCustomBlock } = useEditorStore()
+  const { previewMode } = useEditorStore()
   const searchRef = useRef<HTMLInputElement>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>("editor")
   const [mounted, setMounted] = useState(false)
@@ -77,21 +76,6 @@ export default function HomePage() {
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  // Pick up blocks queued from the community page
-  useEffect(() => {
-    if (!mounted) return
-    const pending = localStorage.getItem("pending_block")
-    if (pending) {
-      localStorage.removeItem("pending_block")
-      addCustomBlock(pending)
-      toast({
-        title: "Block added from community",
-        description: "The community block was added to your canvas.",
-        variant: "success",
-      })
-    }
-  }, [mounted, addCustomBlock])
 
   // Cmd/Ctrl + K → focus block search
   useEffect(() => {

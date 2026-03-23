@@ -1,4 +1,4 @@
-export type Category = "essentials" | "setup" | "project" | "community"
+export type Category = "essentials" | "setup" | "project"
 
 export type Block = {
   id: string
@@ -363,12 +363,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 | \`shadcn/ui\` | UI components |`,
   },
 
-  // ── Community ────────────────────────────────────────────────────────────────
+  // ── Open Source ──────────────────────────────────────────────────────────────
   {
     id: "contributing",
     label: "Contributing",
     icon: "GitPullRequest",
-    category: "community",
+    category: "project",
     defaultContent: `## Contributing
 
 Contributions are what make the open-source community such an amazing place. Any contributions you make are **greatly appreciated**!
@@ -409,7 +409,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide.`,
     id: "license",
     label: "License",
     icon: "Scale",
-    category: "community",
+    category: "project",
     defaultContent: `## License
 
 Distributed under the **MIT License**.
@@ -440,7 +440,7 @@ See [LICENSE](./LICENSE) for full text.`,
     id: "authors",
     label: "Authors",
     icon: "Users",
-    category: "community",
+    category: "project",
     defaultContent: `## Authors & Contributors
 
 - **Your Name** — [@your-username](https://github.com/your-username) — 💻 🎨 📖
@@ -453,7 +453,7 @@ Want to be listed here? [Contribute!](#contributing)`,
     id: "acknowledgements",
     label: "Acknowledgements",
     icon: "Heart",
-    category: "community",
+    category: "project",
     defaultContent: `## Acknowledgements
 
 This project wouldn't exist without these amazing open-source projects and people:
@@ -471,7 +471,7 @@ Special thanks to all [contributors](https://github.com/your-username/your-repo/
     id: "support",
     label: "Support / Sponsor",
     icon: "Coffee",
-    category: "community",
+    category: "project",
     defaultContent: `## Support
 
 If this project saved you time or made your life easier, consider supporting its development:
@@ -495,7 +495,6 @@ export const CATEGORIES: { id: Category; label: string; icon: string }[] = [
   { id: "essentials", label: "Essentials", icon: "Star" },
   { id: "setup", label: "Setup", icon: "Package" },
   { id: "project", label: "Project", icon: "FolderOpen" },
-  { id: "community", label: "Community", icon: "Users" },
 ]
 
 export function getBlock(id: string): Block | undefined {

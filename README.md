@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gitmehdii/readme-v2.so/)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gitmehdii/readme-so-v2/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](./LICENSE)
 
 </div>
@@ -14,6 +14,8 @@
 ---
 
 > **Live demo:** [readme-so-v2.vercel.app](https://readme-so-v2.vercel.app)
+
+I wanted to remake the original website [readme.so](https://readme.so) and add new features. Feel free to try it and leave your opinion and suggestions :)
 
 ## Screenshot
 
@@ -34,13 +36,19 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/gitmehdii/readme-v2.so
+git clone https://github.com/gitmehdii/readme-so-v2
 cd readme-so-v2
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Docker
+
+```bash
+docker compose up --build
+```
 
 ## Tech Stack
 
@@ -62,6 +70,15 @@ npm i -g vercel
 vercel --prod
 ```
 
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create your branch: `git checkout -b feat/my-feature`
+3. Commit your changes: `git commit -m 'feat: add my feature'`
+4. Push and open a Pull Request
+
 ## License
 
-MIT © 2024 gitmehdii
+MIT © 2026 gitmehdii

@@ -6,7 +6,6 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import type { User } from "@supabase/supabase-js"
 
 export type ProfileTemplate = {
   id: string
@@ -21,9 +20,6 @@ export type ProfileTemplate = {
 
 interface TemplateCardProps {
   template: ProfileTemplate
-  user: User | null
-  hasVoted: boolean
-  onVote: (templateId: string, currentlyVoted: boolean) => void
   onUse: (content: string) => void
 }
 
@@ -49,7 +45,6 @@ function TemplatePreviewModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="relative z-10 w-full max-w-5xl bg-background border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        {/* Header */}
         <div className="flex items-center gap-3 px-5 py-4 border-b border-border shrink-0">
           <h2 className="font-semibold text-sm">{template.title}</h2>
           <span
@@ -68,9 +63,7 @@ function TemplatePreviewModal({
           </button>
         </div>
 
-        {/* Body: preview + raw */}
         <div className="flex flex-1 min-h-0 overflow-hidden">
-          {/* Rendered preview */}
           <div className="flex-1 overflow-y-auto p-6 border-r border-border">
             <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
               Preview
@@ -80,7 +73,6 @@ function TemplatePreviewModal({
             </div>
           </div>
 
-          {/* Raw markdown */}
           <div className="w-[320px] shrink-0 overflow-y-auto p-4 hidden md:block">
             <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
               Raw markdown
@@ -91,7 +83,6 @@ function TemplatePreviewModal({
           </div>
         </div>
 
-        {/* Footer */}
         <div className="flex items-center justify-end gap-2 px-5 py-3 border-t border-border bg-muted/30 shrink-0">
           <Button variant="ghost" size="sm" onClick={onClose} className="h-8">
             Close
@@ -106,13 +97,12 @@ function TemplatePreviewModal({
   )
 }
 
-export function TemplateCard({ template, user, hasVoted, onVote, onUse }: TemplateCardProps) {
+export function TemplateCard({ template, onUse }: TemplateCardProps) {
   const [showPreview, setShowPreview] = useState(false)
 
   return (
     <>
       <div className="rounded-lg border border-border bg-card overflow-hidden flex flex-col hover:border-border/80 transition-colors">
-        {/* Scaled preview */}
         <div className="relative h-40 overflow-hidden bg-muted/30 border-b border-border">
           <div
             className="absolute inset-0 origin-top-left pointer-events-none"
@@ -125,7 +115,6 @@ export function TemplateCard({ template, user, hasVoted, onVote, onUse }: Templa
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-muted/50" />
         </div>
 
-        {/* Info */}
         <div className="p-4 flex flex-col gap-3 flex-1">
           <div className="flex items-start gap-2 flex-wrap">
             <h3 className="text-sm font-semibold flex-1">{template.title}</h3>
@@ -139,7 +128,6 @@ export function TemplateCard({ template, user, hasVoted, onVote, onUse }: Templa
             </span>
           </div>
 
-          {/* Author + votes */}
           <div className="flex items-center gap-2">
             {template.author_avatar ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -154,22 +142,12 @@ export function TemplateCard({ template, user, hasVoted, onVote, onUse }: Templa
               </div>
             )}
             <span className="text-xs text-muted-foreground">{template.author_username}</span>
-
-            <button
-              onClick={() => onVote(template.id, hasVoted)}
-              className={cn(
-                "ml-auto flex items-center gap-1 px-2 py-1 rounded text-xs transition-colors",
-                hasVoted
-                  ? "text-primary bg-primary/10 hover:bg-primary/20"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
-              )}
-            >
-              <ThumbsUp className={cn("h-3.5 w-3.5", hasVoted && "fill-current")} />
+            <span className="ml-auto flex items-center gap-1 text-xs text-muted-foreground">
+              <ThumbsUp className="h-3.5 w-3.5" />
               {template.votes}
-            </button>
+            </span>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-2 mt-auto">
             <Button
               variant="outline"
